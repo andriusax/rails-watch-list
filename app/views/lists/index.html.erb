@@ -1,0 +1,10 @@
+<h1>Index page</h1>
+<% @lists.each do |list| %>
+  <%= list %>
+<% end %>
+
+<ul>
+  <% Movie.all.each do |movie| %>
+  <li><%= movie.title %> (rating: <%= movie.rating %>)</li>
+  <% end %>
+</ul>
