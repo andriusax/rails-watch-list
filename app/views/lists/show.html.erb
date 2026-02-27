@@ -1,1 +1,17 @@
-<h1>SHOW PAGE</h1>
+<h1><%= @list.name %></h1>
+
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %> - <%= bookmark.comment %>
+      <%= button_to "Remove",
+                    bookmark_path(bookmark),
+                    method: :delete,
+                    form: { data: { turbo_confirm: "Are you sure?" } },
+                    class: "btn btn-link p-0" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<%= link_to "Back to all lists", lists_path %>
